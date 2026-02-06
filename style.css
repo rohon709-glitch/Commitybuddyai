@@ -1,0 +1,111 @@
+* {
+  box-sizing: border-box;
+  font-family: Inter, Arial, sans-serif;
+}
+
+body {
+  background: #0b0d12;
+  color: #ffffff;
+  margin: 0;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 40px;
+}
+
+h1 {
+  font-size: 32px;
+}
+
+.subtitle {
+  opacity: 0.8;
+}
+
+.tagline {
+  opacity: 0.6;
+  margin-bottom: 30px;
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid #222;
+  margin-bottom: 20px;
+}
+
+.tab {
+  background: none;
+  border: none;
+  color: #aaa;
+  padding: 12px 20px;
+  cursor: pointer;
+}
+
+.tab.active {
+  color: #ff4b4b;
+  border-bottom: 2px solid #ff4b4b;
+}
+
+.form label {
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+input, select {
+  width: 100%;
+  padding: 14px;
+  background: #1b1f2a;
+  border: none;
+  border-radius: 8px;
+  color: white;
+}
+
+input[type="range"] {
+  padding: 0;
+}
+
+.activity {
+  color: #ff4b4b;
+  font-size: 13px;
+}
+
+.generate {
+  margin-top: 30px;
+  padding: 14px;
+  width: 100%;
+  background: #ff4b4b;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.success {
+  margin-top: 20px;
+  padding: 14px;
+  background: #1e4620;
+  color: #4cff4c;
+  border-radius: 8px;
+}
+
+.hidden {
+  display: none;
+}
+.chat {
+  margin-top: 20px;
+  padding: 20px;
+  background: #11141c;
+  border-radius: 10px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  color: #eaeaea;
+  border-left: 4px solid #ff4b4b;
+}
+.chat .user {
+  color: #4caf50;
+  font-weight: bold;
+}
