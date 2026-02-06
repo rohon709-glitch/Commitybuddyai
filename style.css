@@ -95,17 +95,3 @@ input[type="range"] {
 .hidden {
   display: none;
 }
-.chat {
-  margin-top: 20px;
-  padding: 20px;
-  background: #11141c;
-  border-radius: 10px;
-  line-height: 1.6;
-  white-space: pre-wrap;
-  color: #eaeaea;
-  border-left: 4px solid #ff4b4b;
-}
-.chat .user {
-  color: #4caf50;
-  font-weight: bold;
-}
