@@ -1,62 +1,73 @@
 async function generatePlan() {
-  const chatBox = document.getElementById("chatBox");
-  const success = document.getElementById("result");
+  const goalBox = document.getElementById("goals");
+  const selectedGoals = Array.from(goalBox.selectedOptions).map(o => o.value);
 
-  success.classList.remove("hidden");
-  chatBox.classList.remove("hidden");
-  chatBox.innerText = "🧠 CommitBuddy AI is thinking...";
+  const statusBox = document.getElementById("status");
+  const resultBox = document.getElementById("result");
 
-  // Collect user data
-  const age = document.querySelector('input[type="number"]').value;
-  const gender = document.querySelector("select").value;
-  const height = document.querySelectorAll("input")[1].value;
-  const weight = document.querySelectorAll("input")[2].value;
-
-  const goals = Array.from(
-    document.querySelectorAll("select")[1].selectedOptions
-  ).map(o => o.value).join(", ");
-
-  const prompt = `
-User details:
-Age: ${age}
-Gender: ${gender}
-Height: ${height}
-Weight: ${weight}
-Activity Level: ${activity}
-Goals: ${goals.join(", ")}
-
-Create a personalized plan including:
-1. Daily calorie target
-2. Macronutrient split
-3. Workout suggestions
-4. Meal ideas
-5. Motivation tips
-
-Make it realistic and beginner-friendly.
-`;
-
+  // Reset UI
+  statusBox.innerHTML = `
+    <div class="thinking">
+      🧠 CommitBuddy AI is thinking...
+    </div>
+  `;
+  resultBox.innerHTML = "";
 
   try {
-    const response = await fetch(
-      "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.2",
-      {
-        method: "POST",
-        headers: {
-          "Authorization": `Bearer ${HF_API_KEY}`,
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          inputs: prompt,
-          parameters: { max_new_tokens: 300 }
-        })
-      }
-    );
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer YOUR_OPENAI_API_KEY"
+      },
+      body: JSON.stringify({
+        model: "gpt-4o-mini",
+        messages: [
+          {
+            role: "system",
+            content: "You are CommitBuddy AI, a friendly nutrition and fitness coach."
+          },
+          {
+            role: "user",
+            content: `
+Create a personalized nutrition and fitness plan.
+
+Goals:
+${selectedGoals.join(", ")}
+
+Respond with:
+- Daily nutrition tips
+- Weekly fitness plan
+- Motivation advice
+`
+          }
+        ],
+        temperature: 0.7
+      })
+    });
 
     const data = await response.json();
+    const aiText = data.choices[0].message.content;
 
-    chatBox.innerText = data[0].generated_text;
+    // SUCCESS UI
+    statusBox.innerHTML = `
+      <div class="success">
+        ✅ Plan Generated Successfully!
+      </div>
+    `;
+
+    resultBox.innerHTML = `
+      <div class="ai-response">
+        ${aiText.replace(/\n/g, "<br>")}
+      </div>
+    `;
 
   } catch (error) {
-    chatBox.innerText = "❌ AI failed. Please try again.";
+    statusBox.innerHTML = `
+      <div class="error">
+        ❌ AI failed. Please try again.
+      </div>
+    `;
+    console.error(error);
   }
 }
