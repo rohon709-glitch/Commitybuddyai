@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CommitBuddy AI</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="container">
+  <h1>🥗 CommitBuddy AI</h1>
+  <p class="subtitle">Created by Rohan Jamader</p>
+  <p class="tagline">Personalized Nutrition & Commitment Assistant</p>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab active">Basic Information</button>
+    <button class="tab">Health Details</button>
+    <button class="tab">Preferences & Lifestyle</button>
+  </div>
+
+  <!-- Form -->
+  <div class="form">
+    <label>Age</label>
+    <input type="number" value="30" />
+
+    <label>Gender</label>
+    <select>
+      <option>Male</option>
+      <option>Female</option>
+    </select>
+
+    <label>Height</label>
+    <input type="text" value="5'10&quot;" />
+
+    <label>Weight</label>
+    <input type="text" value="160 lbs" />
+
+    <label>Activity Level</label>
+    <input type="range" min="1" max="5" />
+    <span class="activity">Sedentary</span>
+
+    <label>Goals</label>
+    <select id="goals" multiple>
+  <option>Weight Loss</option>
+  <option>Weight Maintenance</option>
+  <option>Muscle Building</option>
+  <option>Fat Loss (Cutting)</option>
+  <option>Strength Training</option>
+  <option>Endurance Improvement</option>
+  <option>Flexibility & Mobility</option>
+  <option>Core Strength</option>
+
+  <option>Healthy Eating</option>
+  <option>Improve Digestion</option>
+  <option>Reduce Sugar Intake</option>
+  <option>Balanced Diet</option>
+  <option>Increase Protein Intake</option>
+  <option>Heart-Healthy Diet</option>
+  <option>Gut Health</option>
+  <option>Immunity Boost</option>
+
+  <option>Daily Exercise Habit</option>
+  <option>Morning Routine</option>
+  <option>Sleep Improvement</option>
+  <option>Stress Reduction</option>
+  <option>Mental Wellness</option>
+  <option>Consistency Building</option>
+  <option>Discipline & Focus</option>
+
+  <option>Body Recomposition</option>
+  <option>Post-Injury Recovery</option>
+  <option>Beginner Fitness Plan</option>
+  <option>Advanced Fitness Plan</option>
+  <option>Desk Job Fitness</option>
+  <option>Home Workout Plan</option>
+</select>
+
+
+    <button class="generate" onclick="generatePlan()">
+      Generate Nutrition Plan
+    </button>
+
+    <div id="result" class="success hidden">
+      Plan Generated Successfully!
+
+      <button onclick="generatePlan()">Generate Nutrition Plan</button>
+
+<div id="result" class="success hidden">
+  Plan Generated Successfully!
+</div>
+
+<div id="chatBox" class="chat hidden"></div>
+
+    </div>
+  </div>
+</div>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
